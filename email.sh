@@ -33,6 +33,26 @@ sudo apt-get install msmtp
 (cd ${path}; git config --local sendemail.cccmd "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom")
 
 # set msmtp config
+# content of ~/.msmtprc
+#
+#	defaults
+#	auth            on
+#	tls             on
+#	tls_starttls	on
+#	tls_trust_file  /etc/ssl/certs/ca-certificates.crt
+#	logfile         ~/.msmtp.log
+#
+#	#Gmail Account:
+#	account			  gmail
+#	host			  smtp.gmail.com
+#	port			  ${port}
+#	from			  ${email}
+#	user			  ${email}
+#	password		  ${password}
+#
+#	# Set a default account:
+#	account default : gmail
+#
 echo -n "defaults
 auth            on
 tls             on
