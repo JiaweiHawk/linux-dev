@@ -33,41 +33,7 @@ sudo apt-get install msmtp
 (cd ${path}; git config --local sendemail.cccmd "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom")
 
 # set msmtp config
-# content of ~/.msmtprc
-#
-#        defaults
-#        auth                      on
-#        tls                       on
-#        tls_starttls              on
-#        tls_trust_file            /etc/ssl/certs/ca-certificates.crt
-#        logfile                   ~/.msmtp.log
-#
-#        #Gmail Account:
-#        account                   gmail
-#        host                      smtp.gmail.com
-#        port                      ${port}
-#        from                      ${email}
-#        user                      ${email}
-#        password                  ${password}
-#
-#        # Set a default account:
-#        account default :         gmail
-#
-echo -n ''                                                               >  ~/.msmtprc
-echo 'defaults'                                                          >> ~/.msmtprc
-echo 'auth                      on'                                      >> ~/.msmtprc
-echo 'tls                       on'                                      >> ~/.msmtprc
-echo 'tls_starttls              on'                                      >> ~/.msmtprc
-echo 'tls_trust_file            /etc/ssl/certs/ca-certificates.crt'      >> ~/.msmtprc
-echo 'logfile                   ~/.msmtp.log'                            >> ~/.msmtprc
-echo ''                                                                  >> ~/.msmtprc
-echo '#Gmail Account:'                                                   >> ~/.msmtprc
-echo 'account                   gmail'                                   >> ~/.msmtprc
-echo 'host                      smtp.gmail.com'                          >> ~/.msmtprc
-echo 'port                      '"${port}"                               >> ~/.msmtprc
-echo 'from                      '"${email}"                              >> ~/.msmtprc
-echo 'user                      '"${email}"                              >> ~/.msmtprc
-echo 'password                  '"${password}"                           >> ~/.msmtprc
-echo ''                                                                  >> ~/.msmtprc
-echo '# Set a default account:'                                          >> ~/.msmtprc
-echo 'account default :         gmail'                                   >> ~/.msmtprc
+cp -f config/msmtprc ~/.msmtprc
+sed -i -e 's|from|'"${email}"'|2'            ~/.msmtprc
+sed -i -e 's|user|'"${email}"'|2'            ~/.msmtprc
+sed -i -e 's|password|'"${password}"'|2'     ~/.msmtprc
