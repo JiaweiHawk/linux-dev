@@ -16,3 +16,6 @@ path="$1"
 
 # set the Makefile
 cp -f config/Makefile ${path}/Makefile
+
+# set the gdb init
+cp -f config/gdbinit ${path}/.gdbinit

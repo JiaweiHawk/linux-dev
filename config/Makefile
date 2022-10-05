@@ -39,9 +39,5 @@ debug:
                 --no-reboot --no-shutdown \
                 -S -gdb tcp::${GDB_PORT}
 
-gdbinit:
-	echo -n '' > .gdbinit
-	echo 'target remote localhost:${GDB_PORT}' >> .gdbinit
-
-gdb: gdbinit
+gdb:
 	gdb ${KERNEL}/vmlinux
