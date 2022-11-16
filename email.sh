@@ -37,3 +37,5 @@ cp -f config/msmtprc ~/.msmtprc
 sed -i -e 's|from|'"${email}"'|2'            ~/.msmtprc
 sed -i -e 's|user|'"${email}"'|2'            ~/.msmtprc
 sed -i -e 's|password|'"${password}"'|2'     ~/.msmtprc
+
+chmod 600 ~/.msmtprc
